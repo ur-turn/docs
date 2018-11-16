@@ -61,7 +61,15 @@ Frequency: Daily.
 ## attendance.csv
 
 The IMS One Roster Specification does not provide student attendance records. As
-a result, we'll need an extract with the columns:
+a result, we'll need an extract with the columns below.
+
+<aside class="notice">
+Frequency: Daily.
+</aside>
+
+<aside class="notice">
+Range: Records from 8th grade to current for enrolled students.
+</aside>
 
 |Column Field Header|Required|Format |Description|
 |-------------------|--------|-------|-----------|
@@ -73,13 +81,6 @@ a result, we'll need an extract with the columns:
 |period             |No      |Integer|[RFC]
 |code               |Yes     |String |[RFC] The district/school code identifying the type of absence.|
 |status             |Yes     |String |[RFC]
-<aside class="notice">
-Frequency: Daily.
-</aside>
-
-<aside class="notice">
-Range: Records from 8th grade to current for enrolled students.
-</aside>
 
 ## Academic Transcripts 
 
