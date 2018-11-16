@@ -82,13 +82,9 @@ Range: Records from 8th grade to current for enrolled students.
 |code               |Yes     |String |[RFC] The district/school code identifying the type of absence.|
 |status             |Yes     |String |[RFC]
 
-## Academic Transcripts 
+## transcripts.csv 
 
 Predicting a student's future sucess is largely based on their previous academic accomplishments.
-
-```csv
-studentId,schoolId,grade,schoolYear,courseNumber,courseName,score,creditType,creditEarned,gpaWeight,gpaValue,unnweightedGpaValue,bonusPoints,honorsCode,startTerm,endTerm,termsLong,actualTerm
-```
 
 <aside class="notice">
 Frequency: At a minimum, we request files be updated at the end of each term. It
@@ -98,3 +94,31 @@ may be easier to have the extracts generated nightly along with the attendance.
 <aside class="notice">
 Range: Records from 8th grade to current for enrolled students.
 </aside>
+
+|Column Field Header|Required|Format |Description|
+|-------------------|--------|-------|-----------|
+|schoolId           |Yes     |       |The school ID in [orgs.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293263)
+|studentId          |Yes     |       |The student ID in [users.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293266)|
+|grade              |Yes     |Integer|The student's grade level at the time of the credit.
+|schoolYear         |Yes     |Integer|The academic school year at the time of the credit. For 2018-2019, this would be 2019.
+|courseNumber       |Yes     |       |[RFC]
+|courseName         |Yes     |String |Name of the course.
+|score              |Yes     |String |The grade recieved: e.g. A, B, C, D, or F. + and - also accepted.
+|creditType         |        |       |[RFC]
+|creditEarned       |Yes     |Float  |The value of the credits earned by the score.
+|gpaWeight          |        |Float  |[RFC]
+|gpaValue           |        |Float  |[RFC]
+|unweightedGpaValue |        |Float  |[RFC]
+|bonusPoints        |        |Float  |[RFC]
+|honorsCode         |        |Float  |[RFC]
+|startTerm          |        |       |[RFC]
+|endTerm            |        |       |[RFC]
+|termsLong          |        |       |[RFC]
+|actualTerm         |        |       |[RFC]
+
+
+
+```csv
+studentId,schoolId,grade,schoolYear,courseNumber,courseName,score,creditType,creditEarned,gpaWeight,gpaValue,unnweightedGpaValue,bonusPoints,honorsCode,startTerm,endTerm,termsLong,actualTerm
+```
+
