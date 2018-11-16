@@ -1,239 +1,93 @@
 ---
-title: API Reference
+title: UR TURN Docs 
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - csv 
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
+ 
+ Welcome to UR TURN's technical documentation. You can use this as a reference to
+ help you prepare your data extracts so students can begin to plan their path to
+ success.
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Right now, we only have example data extracts. We are open to posting code
+examples for different SIS platforms. Feel free to reach out and we'll begin the
+conversation.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Security & Privacy
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Every school has its own account to upload files to using SFTP. We will provide
+credentials to the technical administrator using [onetimesecret.com](https://onetimesecret.com/)
 
-# Authentication
+# File Formats
 
-> To authorize, use this code:
+Every file should be in the CSV (comma separated values) file format. 
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+Details are found in [RFC-4180](https://tools.ietf.org/html/rfc4180) and the [IMS OneRoster&reg; CSV Format Specification v1.1](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293252).
+The OneRoster&reg; specification has the extra restriction that carriage-returns
+are not permitted within a field.
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Fields containing commas and double-quotes must be enclosed in double-quotes. If double-quotes are used to enclose a field, then a double-quote appearing inside the field must be escaped by preceding it with another double-quote.
+
+For the sake of your sanity, we also accept CSV files delimited with a pipe. e.g. |
 </aside>
 
-# Kittens
+# Data Extracts
 
-## Get All Kittens
+## Classes, Courses, Enrollments, Schools, Students, & Parents 
 
-```ruby
-require 'kittn'
+A good portion of the data UR TURN uses is provided by data files which already
+may be available to you. They are the [IMS OneRoster&reg; CSV Tables Specification v1.1](https://www.imsglobal.org/oneroster-v11-final-csv-tables).  
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+UR TURN needs a subset of the OneRoster&reg; reports. They are:
 
-```python
-import kittn
+* [classes.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293256)
+* [courses.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293259)
+* [enrollments.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293261)
+* [orgs.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293263)
+* [users.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293266)
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+Frequency: Daily.
 </aside>
 
-## Get a Specific Kitten
+## Attendance
 
-```ruby
-require 'kittn'
+The IMS One Roster Specification does not provide student attendance records. As
+a result, we'll need an extract with: [list fields here].
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```csv
+studentId,schoolId,endYear,date,period,code,status,excuse,courseId
 ```
 
-```python
-import kittn
+<aside class="notice">
+Frequency: Daily.
+</aside>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+<aside class="notice">
+Range: Records from 8th grade to current for enrolled students.
+</aside>
+
+## Academic Transcripts 
+
+Predicting a student's future sucess is largely based on their previous academic accomplishments.
+
+```csv
+studentId,schoolId,grade,schoolYear,courseNumber,courseName,score,creditType,creditEarned,gpaWeight,gpaValue,unnweightedGpaValue,bonusPoints,honorsCode,startTerm,endTerm,termsLong,actualTerm
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+<aside class="notice">
+Frequency: At a minimum, we request files be updated at the end of each term. It
+may be easier to have the extracts generated nightly along with the attendance.
+</aside>
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+<aside class="notice">
+Range: Records from 8th grade to current for enrolled students.
+</aside>
