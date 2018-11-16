@@ -58,15 +58,21 @@ UR TURN needs a subset of the OneRoster&reg; reports. They are:
 Frequency: Daily.
 </aside>
 
-## Attendance
+## attendance.csv
 
 The IMS One Roster Specification does not provide student attendance records. As
-a result, we'll need an extract with: [list fields here].
+a result, we'll need an extract with the columns:
 
-```csv
-studentId,schoolId,endYear,date,period,code,status,excuse,courseId
-```
-
+|Column Field Header|Required|Format |Description|
+|-------------------|--------|-------|-----------|
+|schoolId           |Yes     |       |The school ID in [orgs.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293263)
+|studentId          |Yes     |       |The student ID in [users.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293266)|
+|courseId           |Yes     |       |The course ID in [courses.csv](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293259).
+|endYear            |Yes     |Integer|For a school year 2018-2019, endYear is 2019.
+|date               |Yes     |Date   |The date of the absence.|
+|period             |No      |Integer|[RFC]
+|code               |Yes     |String |[RFC] The district/school code identifying the type of absence.|
+|status             |Yes     |String |[RFC]
 <aside class="notice">
 Frequency: Daily.
 </aside>
