@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://plugin.powerschool.pearson.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd"
+name="UR TURN School Data Sync"
+version="1.0.0"
+description="Plugin for Powerschool REST API for UR TURN">
+<oauth></oauth>
+<publisher name="UR TURN SBC">
+<contact email="support@urturn.org" />
+</publisher>
+</plugin>
