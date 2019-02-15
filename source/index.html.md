@@ -107,7 +107,7 @@ Range: Records from 8th grade to current for enrolled students.
 |courseNumber       |Yes     |       |[RFC]
 |courseName         |Yes     |String |Name of the course.
 |score              |Yes     |String |The grade recieved: e.g. A, B, C, D, or F. + and - also accepted.
-|creditType         |        |       |[RFC]
+|creditType         |Yes     |String |The course subject the credit is attributed to. e.g. English, Math 
 |creditEarned       |Yes     |Float  |The value of the credits earned by the score.
 |gpaWeight          |        |Float  |[RFC]
 |gpaValue           |        |Float  |[RFC]
