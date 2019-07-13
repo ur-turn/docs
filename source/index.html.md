@@ -125,3 +125,5 @@ Range: Records from 8th grade to current for enrolled students.
 studentId,schoolId,grade,schoolYear,courseNumber,courseName,score,creditType,creditEarned,gpaWeight,gpaValue,unnweightedGpaValue,bonusPoints,honorsCode,startTerm,endTerm,termsLong,actualTerm
 ```
 
+#Support Information
+For support, you can reach us at support@urturn.org
