@@ -1,11 +1,11 @@
 ---
-title: UR TURN Docs 
+title: UR TURN Docs
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - csv 
+  - csv
 
 includes:
-  - powerschool 
+  - powerschool
 
 toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
@@ -14,14 +14,24 @@ search: true
 ---
 
 # Introduction
- 
- Welcome to UR TURN's technical documentation. You can use this as a reference to
- help you prepare your data extracts so students can begin to plan their path to
- success.
+
+Welcome to UR TURN's technical documentation. You can use this as a reference to
+help you prepare your data extracts so students can begin to plan their path to
+success.
 
 Right now, we only have example data extracts. We are open to posting code
 examples for different SIS platforms. Feel free to reach out and we'll begin the
 conversation.
+
+# Getting Started with Docker
+The documentation is dockerized, wich means that you can start working right away just by following these steps:
+
+1. Download docker, either the Desktop or command line version
+2. Clone this repo
+3. Build the docker image which includes all the app dependencies
+  ```
+  $ docker-compose up
+  ```
 
 # Security & Privacy
 
@@ -30,7 +40,7 @@ credentials to the technical administrator using [onetimesecret.com](https://one
 
 # File Formats
 
-Every file should be in the CSV (comma separated values) file format. 
+Every file should be in the CSV (comma separated values) file format.
 
 Details are found in [RFC-4180](https://tools.ietf.org/html/rfc4180) and the [IMS OneRoster&reg; CSV Format Specification v1.1](https://www.imsglobal.org/oneroster-v11-final-csv-tables#_Toc480293252).
 The OneRoster&reg; specification has the extra restriction that carriage-returns
@@ -44,7 +54,7 @@ For the sake of your sanity, we also accept CSV files delimited with a pipe. e.g
 
 # Data Extracts
 
-## Classes, Courses, Enrollments, Schools, Students, & Parents 
+## Classes, Courses, Enrollments, Schools, Students, & Parents
 
 A good portion of the data UR TURN uses is provided by data files which already
 may be available to you. They are the [IMS OneRoster&reg; CSV Tables Specification v1.1](https://www.imsglobal.org/oneroster-v11-final-csv-tables).  
@@ -85,7 +95,7 @@ Range: Records from 8th grade to current for enrolled students.
 |code               |Yes     |String |[RFC] The district/school code identifying the type of absence.|
 |status             |Yes     |String |[RFC]
 
-## transcripts.csv 
+## transcripts.csv
 
 Predicting a student's future sucess is largely based on their previous academic accomplishments.
 
@@ -107,7 +117,7 @@ Range: Records from 8th grade to current for enrolled students.
 |courseNumber       |Yes     |       |[RFC]
 |courseName         |Yes     |String |Name of the course.
 |score              |Yes     |String |The grade recieved: e.g. A, B, C, D, or F. + and - also accepted.
-|creditType         |Yes     |String |The course subject the credit is attributed to. e.g. English, Math 
+|creditType         |Yes     |String |The course subject the credit is attributed to. e.g. English, Math
 |creditEarned       |Yes     |Float  |The value of the credits earned by the score.
 |gpaWeight          |        |Float  |[RFC]
 |gpaValue           |        |Float  |[RFC]
